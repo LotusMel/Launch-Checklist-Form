@@ -8,35 +8,48 @@
 </head>
 
 <body>
+
     <h1>Launch Checklist Form</h1>
     <div id="missionTarget">
-        <!-- Fetch some planetary data https://handlers.education.launchcode.org/static/planets.json-->
-        <form method="POST" action="https://handlers.education.launchcode.org/static/planets.json">
-            <h2>Mission Destination</h2>
-            <ol>
-                <li>Name: ${(action.name[0])}</li>
-                <li>Diameter: ${diameter}</li>
-                <li>Star: ${star}</li>
-                <li>Distance from Earth: ${distance}</li>
-                <li>Number of Moons: ${moons}</li>
-            </ol>
-            <img src="${image}">
-        </form>
+        <script>
+            
+            fetch("https://handlers.education.launchcode.org/static/planets.json").then(
+                function (response) {
+                    response.json().then(function (json) {
+                        const div = document.getElementById("missionTarget");
+                        //let index = 2;
+                        let planet = Math.floor(Math.random() * json.length);
+
+                        div.innerHTML = `
+         <h2>Mission Destination</h2>
+         <ol>
+         <li>Name: ${json[planet].name}</li>
+         <li>Diameter: ${json[planet].diameter}</li>
+         <li>Star: ${json[planet].star}</li>
+         <li>Distance from Earth: ${json[planet].distance}</li>
+         <li>Number of Moons: ${json[planet].moons}</li>
+         </ol>
+         <img src="${json[planet].image}"/>
+         `;
+
+                    });
+                });
+        </script>
     </div>
     <div id="launchForm">
         <form>
 
             <div style="display:flex; flex-direction: row; justify-content: center; align-items: center; margin: 8 0;">
-                <label>Pilot Name <input type="text" name="pilotName" id="pilotName" value="" /></label>
+                <label>Pilot Name <input type="text" name="pilotName" id="pilotName" /></label>
             </div>
             <div style="display:flex; flex-direction: row; justify-content: center; align-items: center; margin: 8 0;">
-                <label>Co-pilot Name <input type="text" name="copilotName" value="" /></label>
+                <label>Co-pilot Name <input type="text" name="copilotName" /></label>
             </div>
             <div style="display:flex; flex-direction: row; justify-content: center; align-items: center; margin: 8 0;">
-                <label>Fuel Level (L) <input type="number" name="fuelLevel" value="" /></label>
+                <label>Fuel Level (L) <input type="text" name="fuelLevel" /></label>
             </div>
             <div style="display:flex; flex-direction: row; justify-content: center; align-items: center; margin: 8 0;">
-                <label>Cargo Mass (kg) <input type="number" name="cargoMass" value="" /></label>
+                <label>Cargo Mass (kg) <input type="text" name="cargoMass" /></label>
             </div>
             <button id="formSubmit">Submit</button>
         </form>
