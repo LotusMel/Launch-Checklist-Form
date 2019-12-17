@@ -17,6 +17,8 @@ fetch("https://handlers.education.launchcode.org/static/planets.json").then(
          </ol>
          <img src="${json[planet].image}"/>
          `;
+      });
+   });
 
 
 
