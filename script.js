@@ -1,9 +1,11 @@
 // Write your JavaScript code here!
+window.addEventListener("load", function () {
+
 fetch("https://handlers.education.launchcode.org/static/planets.json").then(
    function (response) {
       response.json().then(function (json) {
          const div = document.getElementById("missionTarget");
-         //let index = 2;
+         
          let planet = Math.floor(Math.random() * json.length);
 
          div.innerHTML = `
@@ -20,21 +22,21 @@ fetch("https://handlers.education.launchcode.org/static/planets.json").then(
       });
    });
 
-
-
-      let form = document.querySelector("form");
-      form.addEventListener("submit", function (event) {
-         //alert("All fields required!");
-         //event.preventDefault();
-         let pilotName = document.querySelector("input[name=pilotName]");
-         let copilotName = document.querySelector("input[name=copilotName]");
-         let fuelLevel = document.querySelector("input[name=fuelLevel]");
-         let cargoMass = document.querySelector("input[name=cargoMass]");
-
-         if (!pilotName || !copilotName || !fuelLevel || !cargoMass) {
-            alert("All fields required!");
-            event.preventDefault(submit);
-         };
+   
+   let form = document.querySelector("form");
+   form.addEventListener("submit", function (event) {
+      alert("All fields required!");
+      event.preventDefault();
+      let pilotName = document.querySelector("input[name=pilotName]");
+      let copilotName = document.querySelector("input[name=copilotName]");
+      let fuelLevel = document.querySelector("input[name=fuelLevel]");
+      let cargoMass = document.querySelector("input[name=cargoMass]");
+      
+      if (!pilotName || !copilotName || !fuelLevel || !cargoMass) {
+         alert("All fields required!");
+         event.preventDefault(submit);
+      };
+   });
       /*
 This block of code shows how to format the HTML once you fetch some planetary JSON!
 <h2>Mission Destination</h2>
