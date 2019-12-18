@@ -49,7 +49,7 @@ window.addEventListener("load", function () {
             document.getElementById("launchStatus").innerHTML = `Shuttle Not Ready for Launch`;
             document.getElementById("fuelStatus").innerHTML = `Fuel level is too low for launch`;
          } else {
-            document.getElementById("fuelStatus");
+            document.getElementById("fuelStatus").innerHTML = `Fuel level is high enough for launch`;
             fuelStatus = true;
          }
 
@@ -59,7 +59,7 @@ window.addEventListener("load", function () {
             document.getElementById("launchStatus").innerHTML = `Shuttle Not Ready for Launch`;
             document.getElementById("cargoStatus").innerHTML = `Cargo mass too high for launch`;
          } else {
-            document.getElementById("cargoStatus");
+            document.getElementById("cargoStatus").innerHTML = `Cargo mass low enough for launch`;
             cargoStatus = true;
          }
       }
